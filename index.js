@@ -1,13 +1,22 @@
 function calculateTax(amount){
-    return (10/100) * amount;
+    
+    if (amount === 0){
+        return 0
+    }
+    else if (amount < 0){
+        console.log("Invalid amount!")
+    }
+    else {
+        return (10/100) * amount;
+    }
 }
- let tax = calculateTax(10000)
- console.log(tax)
+const tax = calculateTax(-1)
+console.log(tax)
 
 function convertToUpperCase(text){
     return text.toUpperCase();
 }
-console.log(convertToUpperCase("brigid mukami"))
+console.log(convertToUpperCase("Brigid"))
 
 function findMaximum (num1,num2){
     if (num1 > num2){
@@ -15,8 +24,8 @@ function findMaximum (num1,num2){
     }
     else if (num2 > num1){
         return num2
-    } else{
-        return 0
+    } else {
+        return num1
     }
 }
 console.log(findMaximum(2,6))
@@ -32,13 +41,27 @@ function isPalindrome(word){
     }
 }
 
-console.log(isPalindrome("madam"))
+console.log(isPalindrome(" "))
 
 function calculateDiscountedPrice (originalPrice,discountedPercentage){
-    return originalPrice * (discountedPercentage / 100)
+
+    if (discountedPercentage === 0){
+        return originalPrice
+    }
+    else if (discountedPercentage === 100){
+        return 0
+    } 
+    else if (discountedPercentage > 100){
+        console.log("Invalid discount")
+    }
+    else {
+        let discountPrice = originalPrice * (discountedPercentage / 100)
+        return discountPrice
+    }
 }
-console.log(calculateDiscountedPrice(1000,10))
+let discountedPrice = calculateDiscountedPrice(1000,110)
+console.log(discountedPrice)
 
 
 // This is required for the test to function properly  
-// module.exports = { calculateTax, convertToUpperCase, findMaximum, isPalindrome, calculateDiscountedPrice };
+module.exports = { calculateTax, convertToUpperCase, findMaximum, isPalindrome, calculateDiscountedPrice };
